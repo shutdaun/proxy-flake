@@ -1,6 +1,6 @@
 # proxy-flake
 
-Nix flake packaging [xray], [sing-box] and [mihomo] from official
+Nix flake packaging [xray](https://github.com/XTLS/Xray-core), [sing-box](https://github.com/SagerNet/sing-box) and [mihomo](https://github.com/MetaCubeX/mihomo/tree/Meta) from official
 upstream releases.
 
 ## Usage
