@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "sing-box";
-  version = "1.13.14";
+  version = "1.14.1";
 
   src = pkgs.fetchurl {
     url = "https://github.com/SagerNet/sing-box/releases/download/v${finalAttrs.version}/sing-box-${finalAttrs.version}-linux-amd64-glibc.tar.gz";
-    hash = "sha256-qukXIxfGF2Cq49r83oibLlG36lkMQNKzx8zerhSzYbY=";
+    hash = "sha256-TGyGCpb3/OJS16ENBgiuTLfna8vl88qcEQpgQAcJB1Y=";
   };
 
   nativeBuildInputs = [ pkgs.autoPatchelfHook ];
