@@ -12,6 +12,9 @@ packages=(
 
 changed=0
 
+git config user.name "github-actions[bot]"
+git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
 for entry in "${packages[@]}"; do
   IFS='|' read -r name owner_repo file url_template <<< "$entry"
 
@@ -42,6 +45,8 @@ for entry in "${packages[@]}"; do
 
   echo "[$name] updated to $new_version"
   changed=1
+  git add "$file"
+  git commit -m "$name: $cur_version -> $new_version"
 done
 
 if [[ "$changed" -eq 0 ]]; then
@@ -49,9 +54,4 @@ if [[ "$changed" -eq 0 ]]; then
   exit 0
 fi
 
-git config user.name "github-actions[bot]"
-git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-git add pkgs
-git commit -m "chore: bump xray / sing-box / mihomo"
 git push origin HEAD
