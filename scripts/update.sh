@@ -10,6 +10,11 @@ packages=(
   "mihomo|MetaCubeX/mihomo|pkgs/mihomo.nix|https://github.com/MetaCubeX/mihomo/releases/download/{TAG}/mihomo-linux-amd64-{TAG}.gz"
 )
 
+curl_args=(-sS)
+if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+  curl_args+=(-H "Authorization: Bearer $GITHUB_TOKEN")
+fi
+
 changed=0
 
 git config user.name "github-actions[bot]"
@@ -19,7 +24,7 @@ for entry in "${packages[@]}"; do
   IFS='|' read -r name owner_repo file url_template <<< "$entry"
 
   cur_version="$(sed -n 's/^  version = "\(.*\)";$/\1/p' "$file")"
-  tag="$(curl -fsS "https://api.github.com/repos/$owner_repo/releases/latest" | jq -r '.tag_name')"
+  tag="$(curl "${curl_args[@]}" "https://api.github.com/repos/$owner_repo/releases/latest" | jq -r '.tag_name')"
 
   if [[ -z "$tag" || "$tag" == "null" ]]; then
     echo "::warning::could not determine latest release for $owner_repo"
