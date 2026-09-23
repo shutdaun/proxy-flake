@@ -35,13 +35,15 @@ Add overlay and packages:
 
 Binary [cache](https://app.cachix.org/cache/proxy-flake):
 ```nix
-nix.settings = {
-  substituters = [
-    "https://proxy-flake.cachix.org"
-  ];
-  trusted-public-keys = [
-    "proxy-flake.cachix.org-1:MExFcHEQ7KA3AALzrwSKDvOdityyoR3yhxhzfqB7qfc="
-  ];
-};
+{
+  nix.settings = {
+    substituters = [
+      "https://proxy-flake.cachix.org"
+    ];
+    trusted-public-keys = [
+      "proxy-flake.cachix.org-1:MExFcHEQ7KA3AALzrwSKDvOdityyoR3yhxhzfqB7qfc="
+    ];
+  };
+}
 ```
 
