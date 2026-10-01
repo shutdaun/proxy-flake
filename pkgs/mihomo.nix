@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "mihomo";
-  version = "1.19.31";
+  version = "1.19.32";
 
   src = pkgs.fetchurl {
     url = "https://github.com/MetaCubeX/mihomo/releases/download/v${finalAttrs.version}/mihomo-linux-amd64-v${finalAttrs.version}.gz";
-    hash = "sha256-1edLvdvf/0mhrvd3W/WRHaWfDXGW7VCaCskUs2U91fE=";
+    hash = "sha256-hFEQCDbJ7aGUMxwrq/rUkLL68wzrwaBLDnb9isLTXRA=";
   };
 
   nativeBuildInputs = [ pkgs.gzip ];
