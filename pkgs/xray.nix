@@ -2,11 +2,11 @@
 
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "xray";
-  version = "26.10.31";
+  version = "26.11.9";
 
   src = pkgs.fetchurl {
     url = "https://github.com/XTLS/Xray-core/releases/download/v${finalAttrs.version}/Xray-linux-64.zip";
-    hash = "sha256-5L2RGfUK58QWWLGr0Gea4G+YvYZKKQf/M/Lyz3CBshQ=";
+    hash = "sha256-tlH34dmWbuLBse4b+LUscncYJNMGXc6Wu8i8wZ7ZX4I=";
   };
 
   nativeBuildInputs = [ pkgs.unzip ];
