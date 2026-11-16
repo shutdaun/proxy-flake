@@ -1,11 +1,10 @@
 # proxy-flake
 
-Nix flake packaging [xray](https://github.com/XTLS/Xray-core), [sing-box](https://github.com/SagerNet/sing-box) and [mihomo](https://github.com/MetaCubeX/mihomo/tree/Meta) from official
-upstream releases.
+Nix flake packaging [xray](https://github.com/xtls/xray-core), [sing-box](https://github.com/sagernet/sing-box) and [mihomo](https://github.com/metacubex/mihomo/tree/meta) from official upstream releases.
 
 ## Usage
 
-Add flake input:
+Flake input:
 ```nix
 {
   inputs = {
@@ -14,7 +13,7 @@ Add flake input:
 }
 ```
 
-Add overlay and packages:
+Overlay and packages:
 ```nix
 { inputs, pkgs, ... }:
 {
