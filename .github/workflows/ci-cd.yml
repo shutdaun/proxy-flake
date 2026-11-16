@@ -9,13 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: DeterminateSystems/nix-installer-action@v16
-      - uses: cachix/cachix-action@v15
+      - uses: cachix/install-nix-action@v30
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: cachix/cachix-action@v16
         with:
           name: proxy-flake
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix build .#xray .#sing-box .#mihomo
       - run: |
           for p in xray sing-box mihomo; do
-            cachix push proxy-flake "$(nix path-info .#$p)"
+            echo "=== build $p ==="
+            out=$(nix build .#$p --no-link --print-out-paths 2>&1) && \
+            cachix push proxy-flake "$out"
           done
